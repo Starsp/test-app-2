@@ -1,0 +1,4 @@
+spring:
+  jpa:
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect

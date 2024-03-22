@@ -1,0 +1,51 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet author="vassilev" id="20240315_AGIMA">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="AGIMA"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="AGIMA">
+            <column name="ID" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_AGIMA"/>
+            </column>
+            <column name="CREATE_DATE" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="vassilev" id="20240315_IDX_CREATE_AGIMA">
+        <preConditions onFail="MARK_RAN">
+            <indexExists indexName="IDX_CREATE_AGIMA"/>
+        </preConditions>
+        <createIndex tableName="AGIMA" indexName="IDX_CREATE_AGIMA">
+            <column name="CREATE_DATE"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="vassilev" id="20240315_SEQ_AGIMA">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="SEQ_AGIMA"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="SEQ_AGIMA" startValue="1" incrementBy="1" cacheSize="20"/>
+    </changeSet>
+
+    <changeSet author="vassilev" id="20240315_AGIMA_DATA">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">select count(*)
+                                         from AGIMA</sqlCheck>
+        </preConditions>
+        <sql><![CDATA[
+            INSERT INTO agima (id, create_date)
+            SELECT generate_series,
+            FROM generate_series(1, 1000);
+            ]]></sql>
+    </changeSet>
+
+</databaseChangeLog>

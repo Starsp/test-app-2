@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.198.31:5432/iscdbocore
+    username: vassilev-db
+    password: vassilev-db
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    change-log: liquibase-master.xml
+    enabled: true
