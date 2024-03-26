@@ -6,7 +6,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import ru.agima.testapp.agima.service.AgimaService;
 
 import java.time.LocalDate;
-import java.time.ZoneOffset;
 
 @SpringBootTest
 class AgimaServiceTest {
@@ -16,7 +15,7 @@ class AgimaServiceTest {
 
     @Test
     void deleteTest() {
-        agimaService.delete(LocalDate.now().atStartOfDay().toInstant(ZoneOffset.MIN));
+        agimaService.delete(LocalDate.now());
     }
 
 }

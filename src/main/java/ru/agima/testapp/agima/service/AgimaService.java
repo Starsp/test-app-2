@@ -1,13 +1,16 @@
 package ru.agima.testapp.agima.service;
 
-import java.time.Instant;
+import ru.agima.testapp.agima.model.DeleteResponse;
+
+import java.time.LocalDate;
 
 public interface AgimaService {
 
     /**
      * @param threshold
+     * @return count the number of deleted rows
      * @apiNote Delete rows with date older than threshold
      */
-    void delete(Instant threshold);
+    DeleteResponse delete(LocalDate threshold);
 
 }

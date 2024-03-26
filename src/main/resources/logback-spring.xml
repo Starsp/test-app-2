@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <springProperty name="logLevel" source="logging.level.root"/>
+    <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="TEST-APP-LOGGER">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd/HH:mm:ss.SSS/zzz} %-5level [%thread] %logger - %msg%n</pattern>
+        </encoder>
+        <file>${user.dir}/logs/TEST-APP-LOG.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${user.dir}/logs/TEST-APP-LOG-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <maxFileSize>100MB</maxFileSize>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>10GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <root level="${logLevel}">
+        <appender-ref ref="TEST-APP-LOGGER"/>
+    </root>
+
+</configuration>

@@ -36,15 +36,14 @@
         <createSequence sequenceName="SEQ_AGIMA" startValue="1" incrementBy="1" cacheSize="20"/>
     </changeSet>
 
-    <changeSet author="vassilev" id="20240315_AGIMA_DATA">
+    <changeSet author="vassilev" id="20240315_AGIMA_DATA" dbms="postgresql" runAlways="true">
         <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="0">select count(*)
-                                         from AGIMA</sqlCheck>
+            <tableIsEmpty tableName="AGIMA"/>
         </preConditions>
         <sql><![CDATA[
             INSERT INTO agima (id, create_date)
-            SELECT generate_series,
-            FROM generate_series(1, 1000);
+            SELECT generate_series, CURRENT_DATE - make_interval(0, 0, 0, 0, 0, generate_series, 0.0)
+            FROM generate_series(1, 100000000);
             ]]></sql>
     </changeSet>
 

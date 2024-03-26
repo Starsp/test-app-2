@@ -1,4 +1,7 @@
 spring:
+  liquibase:
+    change-log: liquibase-master.xml
+    enabled: true
   jpa:
     show-sql: false
     database-platform: org.hibernate.dialect.H2Dialect

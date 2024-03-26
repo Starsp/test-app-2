@@ -6,13 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.agima.testapp.agima.domain.entity.Agima;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Repository
 public interface AgimaRepository extends JpaRepository<Agima, Long> {
 
     @Modifying
     @Query("DELETE Agima where createDate < :threshold")
-    Integer deleteByThreshold(Instant threshold);
+    Integer deleteByThreshold(LocalDateTime threshold);
 
 }

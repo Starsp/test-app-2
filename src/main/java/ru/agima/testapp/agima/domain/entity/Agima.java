@@ -9,7 +9,7 @@ import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -22,6 +22,6 @@ public class Agima {
     private Long id;
     @Column(name = "CREATE_DATE")
     @Temporal(TemporalType.TIMESTAMP)
-    private Instant createDate;
+    private LocalDateTime createDate;
 
 }
