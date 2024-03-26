@@ -47,4 +47,18 @@
             ]]></sql>
     </changeSet>
 
+    <changeSet author="vassilev" id="20240315_AGIMA_DATA_H2" dbms="h2" runAlways="true">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="AGIMA"/>
+        </preConditions>
+        <sql><![CDATA[
+            INSERT INTO agima (id, create_date)
+            values (1, CURRENT_TIMESTAMP() - 1);
+            INSERT INTO agima (id, create_date)
+            values (2, CURRENT_TIMESTAMP() - 2);
+            INSERT INTO agima (id, create_date)
+            values (3, CURRENT_TIMESTAMP() - 3);
+            ]]></sql>
+    </changeSet>
+
 </databaseChangeLog>
