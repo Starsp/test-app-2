@@ -3,6 +3,7 @@ package ru.agima.testapp.agima.service;
 import ru.agima.testapp.agima.model.DeleteResponse;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface AgimaService {
 
@@ -13,4 +14,7 @@ public interface AgimaService {
      */
     DeleteResponse delete(LocalDate threshold);
 
+    void delete(LocalDateTime threshold, Long count);
+
+    void deletePart(LocalDateTime threshold, Long count);
 }
