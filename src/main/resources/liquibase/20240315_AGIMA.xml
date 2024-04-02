@@ -18,15 +18,6 @@
         </createTable>
     </changeSet>
 
-    <changeSet author="vassilev" id="20240315_IDX_CREATE_AGIMA">
-        <preConditions onFail="MARK_RAN">
-            <indexExists indexName="IDX_CREATE_AGIMA"/>
-        </preConditions>
-        <createIndex tableName="AGIMA" indexName="IDX_CREATE_AGIMA">
-            <column name="CREATE_DATE"/>
-        </createIndex>
-    </changeSet>
-
     <changeSet author="vassilev" id="20240315_SEQ_AGIMA">
         <preConditions onFail="MARK_RAN">
             <not>
