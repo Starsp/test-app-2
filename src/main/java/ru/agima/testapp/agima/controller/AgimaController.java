@@ -11,7 +11,6 @@ import ru.agima.testapp.agima.model.DeleteResponse;
 import ru.agima.testapp.agima.service.AgimaService;
 
 import java.time.LocalDate;
-import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,7 +20,7 @@ public class AgimaController {
 
     @DeleteMapping
     @Operation(summary = "Удаление записей старше порогового значения", description = "Формат даты dd.MM.yyyy")
-    public CompletableFuture<DeleteResponse> delete(@RequestParam(name = "threshold") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate threshold) {
+    public DeleteResponse delete(@RequestParam(name = "threshold") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate threshold) {
         return agimaService.delete(threshold);
     }
 
