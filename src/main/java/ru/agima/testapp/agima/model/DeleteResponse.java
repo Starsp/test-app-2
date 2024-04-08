@@ -15,6 +15,6 @@ import lombok.Setter;
 public class DeleteResponse {
 
     @SchemaProperty(name = "Количество удалённых записей")
-    private Long count;
+    private Integer count;
 
 }

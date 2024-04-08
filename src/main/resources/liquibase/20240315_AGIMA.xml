@@ -27,13 +27,22 @@
         <createSequence sequenceName="SEQ_AGIMA" startValue="1" incrementBy="1" cacheSize="20"/>
     </changeSet>
 
+    <changeSet author="vassilev" id="20240315_IDX_CREATE_AGIMA">
+        <preConditions onFail="MARK_RAN">
+            <indexExists indexName="IDX_CREATE_AGIMA"/>
+        </preConditions>
+        <createIndex tableName="AGIMA" indexName="IDX_CREATE_AGIMA">
+            <column name="CREATE_DATE"/>
+        </createIndex>
+    </changeSet>
+
     <changeSet author="vassilev" id="20240315_AGIMA_DATA" dbms="postgresql" runAlways="true">
         <preConditions onFail="MARK_RAN">
             <tableIsEmpty tableName="AGIMA"/>
         </preConditions>
         <sql><![CDATA[
             INSERT INTO agima (id, create_date)
-            SELECT generate_series, CURRENT_DATE - make_interval(0, 0, 0, 0, 0, generate_series, 0.0)
+            SELECT nextval('seq_agima'), CURRENT_DATE - make_interval(0, 0, 0, 0, 0, generate_series, 0.0)
             FROM generate_series(1, 100000000);
             ]]></sql>
     </changeSet>
