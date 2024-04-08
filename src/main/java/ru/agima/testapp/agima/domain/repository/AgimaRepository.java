@@ -17,5 +17,4 @@ public interface AgimaRepository extends JpaRepository<Agima, Long> {
     @Query("DELETE Agima where createDate < :threshold")
     Integer deleteByThreshold(LocalDateTime threshold);
 
-    Long countAgimaByCreateDateIsBefore(LocalDateTime threshold);
 }
